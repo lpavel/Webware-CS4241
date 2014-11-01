@@ -2,9 +2,97 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>Favorite Foods</title>
+    <meta name = "Language" content="English">
+    <meta name = "Search" content="Food, Laurentiu Pavel,
+       Personal, Healthy">
+
+    <style type="text/css">
+        .div0 {
+            color = #a3a3a3;
+        }
+        .div1{
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            height: 200px;
+            width: 500px;
+        }
+        .div2{
+            position: absolute;
+            top: 220px;
+            left: 5px;
+            width: 500px;
+            height: 400px;
+        }
+        .div3 {
+            position: absolute;
+            top: 220px;
+            left: 520px;
+            height: 400px;
+        }
+        .div4 {
+            position: absolute;
+            top: 640px;
+            left: 5px;
+        }
+    </style>
+
+    <script type="javascript">
+
+        var images = [
+            "img/dish1.jpg",
+            "img/dish2.jpg",
+            "img/dish3.jpg",
+            "img/dish4.jpg",
+            "img/dish5.jpg"
+        ]
+
+        var currentImage = 0;
+
+        function start() {
+            document.getElementById("changePic").addEventListener("click", changeImg, false);
+
+            var imageVar = document.getElementById("imageSlide");
+            imageVar.innerHTML = "<img src='" + images[currentImage++] + "' width: "400" height: "300"/>";
+        }
+
+        function changeImg() {
+            currentImage = (currentImage < images.size)
+            ? currentImage : 0;
+
+            var imageVar = document.getElementById("imageSlide");
+            imageVar.innerHTML = "<img src='" + images[currentImage++] + "' width='400' height='300'/>";
+        }
+
+    </script>
+
 </head>
 <body>
-<h1> Here is something </h1>
+<div class="div0">
+    <div class="div1">
+        <h1> Healthy Cuisine </h1>
+        <p> Hi! I'm Laurentiu Pavel, an Ironman triathlete.
+            For us, triathletes, nutrition is such a big part
+            and I am very fortunate to know so many things about
+            what you are supposed to eat and what you are not supposed to.
+            I am going to list some of the healthy meals that I use to
+            feed myself for good mental and physical productivity.
+        </p>
+        <p> For more info, you should <a href="mailto:lpavel@wpi.edu"> email me</a>
+        </p>
+    </div>
+    <div class="div2">
+        <div id="imageSlide"> </div>
+        <input type="button" id="changePic" value="See next dish">
+    </div>
+    <div class="div3">
+        <p> Not relevant yet</p>
+    </div>
+    <div class="div4">
+        <p> Not relevant yet</p>
+
+    </div>
+</div>
 </body>
 </html>
