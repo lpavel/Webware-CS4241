@@ -9,7 +9,6 @@
 
     <style type="text/css">
         .div0 {
-            color = #a3a3a3;
         }
         .div1{
             position: absolute;
@@ -22,53 +21,109 @@
             position: absolute;
             top: 220px;
             left: 5px;
-            width: 500px;
-            height: 400px;
+            width: 620px;
+            height: 420px;
         }
         .div3 {
             position: absolute;
             top: 220px;
-            left: 520px;
-            height: 400px;
+            left: 640px;
+            height: 420px;
         }
         .div4 {
             position: absolute;
             top: 640px;
             left: 5px;
         }
+        #imageSlide{
+            width: 450px;
+            height: 350px:
+        }
+        #tipsArea{
+            width: 600px;
+            height: 200px;
+            border: 2px solid;
+        }
+
     </style>
 
-    <script type="javascript">
+    <script type="text/javascript">
+
+        var createImage = function(src, title) {
+            var img   = new Image();
+            img.src   = src;
+            img.alt   = title;
+            img.title = title;
+            img.height = 400;
+            img.width = 600;
+            return img;
+        };
+
+        var tips = [
+                "1 WANT IT - It’s easy to get carried away when your clubmates start planning a trip " +
+                "to a big IM race for next year, especially if they’ve just come back from a 2009 race " +
+                "full of inspiring stories and PBs. But to make a good job of Ironman (and enjoy it) " +
+                "you must want to do it for yourself. " +
+                "(taken from http://www.triradar.com/training-advice/25-beginners-ironman-tips)",
+                "2 BE CONSISTENT - You’ll need a break from hard training after this season, but don’t " +
+                "let it fall off completely over the winter. Your race may be a long way off, but you " +
+                "risk injury if you stop training then suddenly jump back in six months later." +
+                "(taken from http://www.triradar.com/training-advice/25-beginners-ironman-tips)",
+                "3 TALK TO FRIENDS - No one’s ironman experience is the same, but you’ll have a better " +
+                "idea what you’re getting into if you speak to as many Ironman friends as possible. They " +
+                "will have learnt lessons during their build-up and can help you avoid little pitfalls " +
+                "that can make a big difference." +
+                "(taken from http://www.triradar.com/training-advice/25-beginners-ironman-tips)"
+        ];
 
         var images = [
-            "img/dish1.jpg",
-            "img/dish2.jpg",
-            "img/dish3.jpg",
-            "img/dish4.jpg",
-            "img/dish5.jpg"
-        ]
+            createImage(".img/dish1.jpg", "Salmon"),
+            createImage(".img/dish2.jpg", "Dish2"),
+            createImage(".img/dish3.jpg", "Dish3"),
+            createImage(".img/dish4.jpg", "Dish3"),
+            createImage(".img/dish5.jpg", "Dish3")
+        ];
 
         var currentImage = 0;
 
         function start() {
-            document.getElementById("changePic").addEventListener("click", changeImg, false);
-
             var imageVar = document.getElementById("imageSlide");
-            imageVar.innerHTML = "<img src='" + images[currentImage++] + "' width: "400" height: "300"/>";
+            var textVar = document.getElementById("tipsArea");
+            imageVar.appendChild(images[currentImage]);
+            textVar.innerHTML = tips[0];
+        }
+
+        function getTip1() {
+            var textVar = document.getElementById("tipsArea");
+            textVar.innerHTML = tips[0];
+        }
+
+        function getTip2() {
+            var textVar = document.getElementById("tipsArea");
+            textVar.innerHTML = tips[1];
+        }
+
+        function getTip3() {
+            var textVar = document.getElementById("tipsArea");
+            textVar.innerHTML = tips[2];
         }
 
         function changeImg() {
-            currentImage = (currentImage < images.size)
-            ? currentImage : 0;
-
             var imageVar = document.getElementById("imageSlide");
-            imageVar.innerHTML = "<img src='" + images[currentImage++] + "' width='400' height='300'/>";
+            imageVar.removeChild(images[currentImage]);
+            if(currentImage < images.length - 1) {
+                currentImage = currentImage + 1;
+            }
+            else {
+                currentImage = 0;
+            }
+            imageVar.appendChild(images[currentImage]);
         }
 
     </script>
 
 </head>
-<body>
+<body onload="start()">
 <div class="div0">
     <div class="div1">
         <h1> Healthy Cuisine </h1>
@@ -84,10 +139,16 @@
     </div>
     <div class="div2">
         <div id="imageSlide"> </div>
-        <input type="button" id="changePic" value="See next dish">
+        <button id="imageButton" onclick="changeImg()">Next Dish</button>
     </div>
     <div class="div3">
-        <p> Not relevant yet</p>
+        <h3> Here some tips about training </h3>
+        <textarea id="tipsArea"> </textarea>
+        <br>
+        <button id="Tip1Button" onclick="getTip1()">Tip1</button>
+        <button id="Tip2Button" onclick="getTip2()">Tip2</button>
+        <button id="Tip3Button" onclick="getTip3()">Tip3</button>
+
     </div>
     <div class="div4">
         <p> Not relevant yet</p>
