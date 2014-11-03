@@ -37,11 +37,15 @@
         }
         #imageSlide{
             width: 450px;
-            height: 350px:
+            height: 350px;
+        }
+        #imageButton {
+            position: absolute;
+            top: 405px;
         }
         #tipsArea{
             width: 600px;
-            height: 200px;
+            height: 335px;
             border: 2px solid;
         }
 
@@ -76,6 +80,24 @@
                 "(taken from http://www.triradar.com/training-advice/25-beginners-ironman-tips)"
         ];
 
+        var workout1 = [
+            ["run", "long", "1h 30min"],
+            ["bike","short", "2h"],
+            ["swim","medium", "40mins"]
+        ];
+
+        var workout2 = [
+            ["run", "short", "40mins"],
+            ["bike","medium","4h"],
+            ["swim","long",  "2h"]
+        ];
+
+        var workout3 = [
+            ["run", "medium","1h"],
+            ["bike","long",  "8h"],
+            ["swim","short", "30mins"]
+        ];
+
         var images = [
             createImage(".img/dish1.jpg", "Salmon"),
             createImage(".img/dish2.jpg", "Dish2"),
@@ -106,6 +128,75 @@
         function getTip3() {
             var textVar = document.getElementById("tipsArea");
             textVar.innerHTML = tips[2];
+        }
+
+        function getWorkout1() {
+            var t11 = document.getElementById("t11");
+            var t12 = document.getElementById("t12");
+            var t13 = document.getElementById("t13");
+            var t21 = document.getElementById("t21");
+            var t22 = document.getElementById("t22");
+            var t23 = document.getElementById("t23");
+            var t31 = document.getElementById("t31");
+            var t32 = document.getElementById("t32");
+            var t33 = document.getElementById("t33");
+
+            t11.innerHTML = workout1[0][0];
+            console.log(workout1[0][0]);
+            t12.innerHTML = workout1[0][1];
+            t13.innerHTML = workout1[0][2];
+            t21.innerHTML = workout1[1][0];
+            t22.innerHTML = workout1[1][1];
+            t23.innerHTML = workout1[1][2];
+            t31.innerHTML = workout1[2][0];
+            t32.innerHTML = workout1[2][1];
+            t33.innerHTML = workout1[2][2];
+        }
+
+        function getWorkout2() {
+            var t11 = document.getElementById("t11");
+            var t12 = document.getElementById("t12");
+            var t13 = document.getElementById("t13");
+            var t21 = document.getElementById("t21");
+            var t22 = document.getElementById("t22");
+            var t23 = document.getElementById("t23");
+            var t31 = document.getElementById("t31");
+            var t32 = document.getElementById("t32");
+            var t33 = document.getElementById("t33");
+
+            t11.innerHTML = workout2[0][0];
+            console.log(workout2[0][0]);
+            t12.innerHTML = workout2[0][1];
+            t13.innerHTML = workout2[0][2];
+            t21.innerHTML = workout2[1][0];
+            t22.innerHTML = workout2[1][1];
+            t23.innerHTML = workout2[1][2];
+            t31.innerHTML = workout2[2][0];
+            t32.innerHTML = workout2[2][1];
+            t33.innerHTML = workout2[2][2];
+        }
+
+        function getWorkout3() {
+            var t11 = document.getElementById("t11");
+            var t12 = document.getElementById("t12");
+            var t13 = document.getElementById("t13");
+            var t21 = document.getElementById("t21");
+            var t22 = document.getElementById("t22");
+            var t23 = document.getElementById("t23");
+            var t31 = document.getElementById("t31");
+            var t32 = document.getElementById("t32");
+            var t33 = document.getElementById("t33");
+
+            t11.innerHTML = workout3[0][0];
+            console.log(workout3[0][0]);
+            t12.innerHTML = workout3[0][1];
+            t13.innerHTML = workout3[0][2];
+            t21.innerHTML = workout3[1][0];
+            t22.innerHTML = workout3[1][1];
+            t23.innerHTML = workout3[1][2];
+            t31.innerHTML = workout3[2][0];
+            t32.innerHTML = workout3[2][1];
+            t33.innerHTML = workout3[2][2];
         }
 
         function changeImg() {
@@ -148,11 +239,35 @@
         <button id="Tip1Button" onclick="getTip1()">Tip1</button>
         <button id="Tip2Button" onclick="getTip2()">Tip2</button>
         <button id="Tip3Button" onclick="getTip3()">Tip3</button>
-
     </div>
     <div class="div4">
-        <p> Not relevant yet</p>
+        <table>
+            <tr>
+                <td>type</td>
+                <td>specific</td>
+                <td>duration</td>
+            </tr>
+            <tr>
+                <td class="t11"></td>
+                <td class="t12"></td>
+                <td class="t13"></td>
+            </tr>
+            <tr>
+                <td class="t21"></td>
+                <td class="t22"></td>
+                <td class="t23"></td>
+            </tr>
+            <tr>
+                <td class="t31"></td>
+                <td class="t32"></td>
+                <td class="t33"></td>
+            </tr>
 
+        </table>
+        <p> Not relevant yet</p>
+        <button id="Workout1" onclick="getWorkout1()">Workout1</button>
+        <button id="Workout2" onclick="getWorkout2()">Workout2</button>
+        <button id="Workout3" onclick="getWorkout3()">Workout3</button>
     </div>
 </div>
 </body>
