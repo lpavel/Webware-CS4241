@@ -127,19 +127,9 @@
             document.getElementById("t33").innerHTML = swimWorkouts[currentSwim][2];
         }
 
-        function getTip1() {
+        function getTip(tipNumber) {
             var textVar = document.getElementById("tipsArea");
-            textVar.innerHTML = tips[0];
-        }
-
-        function getTip2() {
-            var textVar = document.getElementById("tipsArea");
-            textVar.innerHTML = tips[1];
-        }
-
-        function getTip3() {
-            var textVar = document.getElementById("tipsArea");
-            textVar.innerHTML = tips[2];
+            textVar.innerHTML = tips[tipNumber];
         }
 
         function changeRun() {
@@ -204,9 +194,9 @@
         <h3> Here some tips about training </h3>
         <textarea id="tipsArea"> </textarea>
         <br>
-        <button id="Tip1Button" onclick="getTip1()">Tip1</button>
-        <button id="Tip2Button" onclick="getTip2()">Tip2</button>
-        <button id="Tip3Button" onclick="getTip3()">Tip3</button>
+        <button id="Tip1Button" onclick="getTip(0)">Tip1</button>
+        <button id="Tip2Button" onclick="getTip(1)">Tip2</button>
+        <button id="Tip3Button" onclick="getTip(2)">Tip3</button>
     </div>
     <div class="div4">
         <table>
