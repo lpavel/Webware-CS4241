@@ -107,12 +107,34 @@
         ];
 
         var currentImage = 0;
-
+        var currentRun = 0;
+        var currentBike = 0;
+        var currentSwim = 0;
         function start() {
             var imageVar = document.getElementById("imageSlide");
             var textVar = document.getElementById("tipsArea");
             imageVar.appendChild(images[currentImage]);
             textVar.innerHTML = tips[0];
+
+            var t11 = document.getElementById("t11");
+            var t12 = document.getElementById("t12");
+            var t13 = document.getElementById("t13");
+            var t21 = document.getElementById("t21");
+            var t22 = document.getElementById("t22");
+            var t23 = document.getElementById("t23");
+            var t31 = document.getElementById("t31");
+            var t32 = document.getElementById("t32");
+            var t33 = document.getElementById("t33");
+
+            t11.innerHTML = workout1[0][0];
+            t12.innerHTML = workout1[0][1];
+            t13.innerHTML = workout1[0][2];
+            t21.innerHTML = workout1[1][0];
+            t22.innerHTML = workout1[1][1];
+            t23.innerHTML = workout1[1][2];
+            t31.innerHTML = workout1[2][0];
+            t32.innerHTML = workout1[2][1];
+            t33.innerHTML = workout1[2][2];
         }
 
         function getTip1() {
@@ -130,73 +152,56 @@
             textVar.innerHTML = tips[2];
         }
 
-        function getWorkout1() {
+        function changeRun() {
+            if(currentRun < workout1.length - 1) {
+                currentRun = currentRun + 1;
+            }
+            else {
+                currentRun = 0;
+            }
+
             var t11 = document.getElementById("t11");
             var t12 = document.getElementById("t12");
             var t13 = document.getElementById("t13");
-            var t21 = document.getElementById("t21");
-            var t22 = document.getElementById("t22");
-            var t23 = document.getElementById("t23");
-            var t31 = document.getElementById("t31");
-            var t32 = document.getElementById("t32");
-            var t33 = document.getElementById("t33");
 
-            t11.innerHTML = workout1[0][0];
-            console.log(workout1[0][0]);
-            t12.innerHTML = workout1[0][1];
-            t13.innerHTML = workout1[0][2];
-            t21.innerHTML = workout1[1][0];
-            t22.innerHTML = workout1[1][1];
-            t23.innerHTML = workout1[1][2];
-            t31.innerHTML = workout1[2][0];
-            t32.innerHTML = workout1[2][1];
-            t33.innerHTML = workout1[2][2];
+            console.log(workout1[currentRun][0]);
+            t11.innerHTML = workout1[currentRun][0];
+            t12.innerHTML = workout1[currentRun][1];
+            t13.innerHTML = workout1[currentRun][2];
         }
 
-        function getWorkout2() {
-            var t11 = document.getElementById("t11");
-            var t12 = document.getElementById("t12");
-            var t13 = document.getElementById("t13");
+        function changeBike() {
+            if(currentBike < workout1.length - 1) {
+                currentBike = currentBike + 1;
+            }
+            else {
+                currentBike = 0;
+            }
+
             var t21 = document.getElementById("t21");
             var t22 = document.getElementById("t22");
             var t23 = document.getElementById("t23");
-            var t31 = document.getElementById("t31");
-            var t32 = document.getElementById("t32");
-            var t33 = document.getElementById("t33");
 
-            t11.innerHTML = workout2[0][0];
-            console.log(workout2[0][0]);
-            t12.innerHTML = workout2[0][1];
-            t13.innerHTML = workout2[0][2];
-            t21.innerHTML = workout2[1][0];
-            t22.innerHTML = workout2[1][1];
-            t23.innerHTML = workout2[1][2];
-            t31.innerHTML = workout2[2][0];
-            t32.innerHTML = workout2[2][1];
-            t33.innerHTML = workout2[2][2];
+            t21.innerHTML = workout2[currentBike][0];
+            t22.innerHTML = workout2[currentBike][1];
+            t23.innerHTML = workout2[currentBike][2];
         }
 
-        function getWorkout3() {
-            var t11 = document.getElementById("t11");
-            var t12 = document.getElementById("t12");
-            var t13 = document.getElementById("t13");
-            var t21 = document.getElementById("t21");
-            var t22 = document.getElementById("t22");
-            var t23 = document.getElementById("t23");
+        function changeSwim() {
+            if(currentSwim < workout1.length - 1) {
+                currentSwim = currentSwim + 1;
+            }
+            else {
+                currentSwim = 0;
+            }
+
             var t31 = document.getElementById("t31");
             var t32 = document.getElementById("t32");
             var t33 = document.getElementById("t33");
 
-            t11.innerHTML = workout3[0][0];
-            console.log(workout3[0][0]);
-            t12.innerHTML = workout3[0][1];
-            t13.innerHTML = workout3[0][2];
-            t21.innerHTML = workout3[1][0];
-            t22.innerHTML = workout3[1][1];
-            t23.innerHTML = workout3[1][2];
-            t31.innerHTML = workout3[2][0];
-            t32.innerHTML = workout3[2][1];
-            t33.innerHTML = workout3[2][2];
+            t31.innerHTML = workout3[currentSwim][0];
+            t32.innerHTML = workout3[currentSwim][1];
+            t33.innerHTML = workout3[currentSwim][2];
         }
 
         function changeImg() {
@@ -265,9 +270,9 @@
 
         </table>
         <p> Not relevant yet</p>
-        <button id="Workout1" onclick="getWorkout1()">Workout1</button>
-        <button id="Workout2" onclick="getWorkout2()">Workout2</button>
-        <button id="Workout3" onclick="getWorkout3()">Workout3</button>
+        <button id="Workout1" onclick="changeRun()">ChangeRunWorkout</button>
+        <button id="Workout2" onclick="changeBike()">ChangeBikeWorkout</button>
+        <button id="Workout3" onclick="changeSwim()">ChangeSwimWorkout</button>
     </div>
 </div>
 </body>
