@@ -80,22 +80,22 @@
                 "(taken from http://www.triradar.com/training-advice/25-beginners-ironman-tips)"
         ];
 
-        var workout1 = [
+        var runWorkouts = [
             ["run", "long", "1h 30min"],
-            ["bike","short", "2h"],
-            ["swim","medium", "40mins"]
-        ];
-
-        var workout2 = [
             ["run", "short", "40mins"],
-            ["bike","medium","4h"],
-            ["swim","long",  "2h"]
+            ["run", "medium","1h"]
         ];
 
-        var workout3 = [
-            ["run", "medium","1h"],
+        var bikeWorkouts = [
+            ["bike","medium","4h"],
             ["bike","long",  "8h"],
-            ["swim","short", "30mins"]
+            ["bike","short", "2h"],
+        ];
+
+        var swimWorkouts = [
+            ["swim","medium", "40mins"],
+            ["swim","short", "30mins"],
+            ["swim","long",  "2h"]
         ];
 
         var images = [
@@ -116,25 +116,15 @@
             imageVar.appendChild(images[currentImage]);
             textVar.innerHTML = tips[0];
 
-            var t11 = document.getElementById("t11");
-            var t12 = document.getElementById("t12");
-            var t13 = document.getElementById("t13");
-            var t21 = document.getElementById("t21");
-            var t22 = document.getElementById("t22");
-            var t23 = document.getElementById("t23");
-            var t31 = document.getElementById("t31");
-            var t32 = document.getElementById("t32");
-            var t33 = document.getElementById("t33");
-
-            t11.innerHTML = workout1[0][0];
-            t12.innerHTML = workout1[0][1];
-            t13.innerHTML = workout1[0][2];
-            t21.innerHTML = workout1[1][0];
-            t22.innerHTML = workout1[1][1];
-            t23.innerHTML = workout1[1][2];
-            t31.innerHTML = workout1[2][0];
-            t32.innerHTML = workout1[2][1];
-            t33.innerHTML = workout1[2][2];
+            document.getElementById("t11").innerHTML = runWorkouts[currentRun][0];
+            document.getElementById("t12").innerHTML = runWorkouts[currentRun][1];
+            document.getElementById("t13").innerHTML = runWorkouts[currentRun][2];
+            document.getElementById("t21").innerHTML = bikeWorkouts[currentBike][0];
+            document.getElementById("t22").innerHTML = bikeWorkouts[currentBike][1];
+            document.getElementById("t23").innerHTML = bikeWorkouts[currentBike][2];
+            document.getElementById("t31").innerHTML = swimWorkouts[currentSwim][0];
+            document.getElementById("t32").innerHTML = swimWorkouts[currentSwim][1];
+            document.getElementById("t33").innerHTML = swimWorkouts[currentSwim][2];
         }
 
         function getTip1() {
@@ -153,66 +143,39 @@
         }
 
         function changeRun() {
-            if(currentRun < workout1.length - 1) {
-                currentRun = currentRun + 1;
-            }
-            else {
-                currentRun = 0;
-            }
+            currentRun = (currentRun < runWorkouts.length - 1)
+                    ? (currentRun + 1) : 0;
 
-            var t11 = document.getElementById("t11");
-            var t12 = document.getElementById("t12");
-            var t13 = document.getElementById("t13");
-
-            console.log(workout1[currentRun][0]);
-            t11.innerHTML = workout1[currentRun][0];
-            t12.innerHTML = workout1[currentRun][1];
-            t13.innerHTML = workout1[currentRun][2];
+            document.getElementById("t11").innerHTML = runWorkouts[currentRun][0];
+            document.getElementById("t12").innerHTML = runWorkouts[currentRun][1];
+            document.getElementById("t13").innerHTML = runWorkouts[currentRun][2];
         }
 
         function changeBike() {
-            if(currentBike < workout1.length - 1) {
-                currentBike = currentBike + 1;
-            }
-            else {
-                currentBike = 0;
-            }
+            currentBike = (currentBike < bikeWorkouts.length - 1)
+                    ? (currentBike + 1) : 0;
 
-            var t21 = document.getElementById("t21");
-            var t22 = document.getElementById("t22");
-            var t23 = document.getElementById("t23");
-
-            t21.innerHTML = workout2[currentBike][0];
-            t22.innerHTML = workout2[currentBike][1];
-            t23.innerHTML = workout2[currentBike][2];
+            document.getElementById("t21").innerHTML = bikeWorkouts[currentBike][0];
+            document.getElementById("t22").innerHTML = bikeWorkouts[currentBike][1];
+            document.getElementById("t23").innerHTML = bikeWorkouts[currentBike][2];
         }
 
         function changeSwim() {
-            if(currentSwim < workout1.length - 1) {
-                currentSwim = currentSwim + 1;
-            }
-            else {
-                currentSwim = 0;
-            }
+            currentSwim = (currentSwim < swimWorkouts.length - 1)
+                    ? (currentSwim + 1) : 0;
 
-            var t31 = document.getElementById("t31");
-            var t32 = document.getElementById("t32");
-            var t33 = document.getElementById("t33");
-
-            t31.innerHTML = workout3[currentSwim][0];
-            t32.innerHTML = workout3[currentSwim][1];
-            t33.innerHTML = workout3[currentSwim][2];
+            var t31 = document.getElementById("t31").innerHTML = swimWorkouts[currentSwim][0];
+            var t32 = document.getElementById("t32").innerHTML = swimWorkouts[currentSwim][1];
+            var t33 = document.getElementById("t33").innerHTML = swimWorkouts[currentSwim][2];
         }
 
         function changeImg() {
             var imageVar = document.getElementById("imageSlide");
             imageVar.removeChild(images[currentImage]);
-            if(currentImage < images.length - 1) {
-                currentImage = currentImage + 1;
-            }
-            else {
-                currentImage = 0;
-            }
+
+            currentImage = (currentImage < images.length - 1)
+                    ? (currentImage + 1) : 0;
+
             imageVar.appendChild(images[currentImage]);
         }
 
