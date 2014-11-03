@@ -1,15 +1,18 @@
 <!DOCTYPE html>
+<!--beginning of document-->
 <html>
 <head lang="en">
+    <!--initialization of variables-->
     <meta charset="UTF-8">
     <title>Favorite Foods</title>
+    <!--setup of meta data-->
     <meta name = "Language" content="English">
     <meta name = "Search" content="Food, Laurentiu Pavel,
        Personal, Healthy">
 
+    <!--css definitions-->
     <style type="text/css">
-        .div0 {
-        }
+        /*corresponds to top div*/
         .div1{
             position: absolute;
             top: 5px;
@@ -17,6 +20,7 @@
             height: 200px;
             width: 500px;
         }
+        /*corresponds to left middle div*/
         .div2{
             position: absolute;
             top: 220px;
@@ -24,35 +28,41 @@
             width: 620px;
             height: 420px;
         }
+        /*corresponds to right middle div*/
         .div3 {
             position: absolute;
             top: 220px;
             left: 640px;
             height: 420px;
         }
+        /*corresponds to bottom div*/
         .div4 {
             position: absolute;
-            top: 640px;
+            top: 670px;
             left: 5px;
         }
+        /*the image slot inside div2*/
         #imageSlide{
             width: 450px;
             height: 350px;
         }
+        /*the images button below image slot*/
         #imageButton {
             position: absolute;
             top: 405px;
         }
+        /*the textarea in div3 where I have tips printed*/
         #tipsArea{
             width: 600px;
             height: 335px;
             border: 2px solid;
         }
-
     </style>
 
+    <!--javascript definition of the code-->
     <script type="text/javascript">
 
+        /*constructor of Images for more efficient coding*/
         var createImage = function(src, title) {
             var img   = new Image();
             img.src   = src;
@@ -63,6 +73,7 @@
             return img;
         };
 
+        /*the tips to be printed in the textarea*/
         var tips = [
                 "1 WANT IT - It’s easy to get carried away when your clubmates start planning a trip " +
                 "to a big IM race for next year, especially if they’ve just come back from a 2009 race " +
@@ -80,6 +91,7 @@
                 "(taken from http://www.triradar.com/training-advice/25-beginners-ironman-tips)"
         ];
 
+        /*Workouts as 2d arrays that can be changed based on the buttons pressed*/
         var runWorkouts = [
             ["run", "long", "1h 30min"],
             ["run", "short", "40mins"],
@@ -98,6 +110,7 @@
             ["swim","long",  "2h"]
         ];
 
+        /*images as an array to scroll from*/
         var images = [
             createImage(".img/dish1.jpg", "Salmon"),
             createImage(".img/dish2.jpg", "Dish2"),
@@ -106,74 +119,94 @@
             createImage(".img/dish5.jpg", "Dish3")
         ];
 
+        /*initial variables */
         var currentImage = 0;
         var currentRun = 0;
         var currentBike = 0;
         var currentSwim = 0;
+
+        /*onload function that populates all fields in the docs*/
         function start() {
+            /*setup the initial image and tip*/
             var imageVar = document.getElementById("imageSlide");
             var textVar = document.getElementById("tipsArea");
             imageVar.appendChild(images[currentImage]);
             textVar.innerHTML = tips[0];
 
+            /*populate with initial workouts*/
+            /*first line*/
             document.getElementById("t11").innerHTML = runWorkouts[currentRun][0];
             document.getElementById("t12").innerHTML = runWorkouts[currentRun][1];
             document.getElementById("t13").innerHTML = runWorkouts[currentRun][2];
+            /*second line*/
             document.getElementById("t21").innerHTML = bikeWorkouts[currentBike][0];
             document.getElementById("t22").innerHTML = bikeWorkouts[currentBike][1];
             document.getElementById("t23").innerHTML = bikeWorkouts[currentBike][2];
+            /*3rd line*/
             document.getElementById("t31").innerHTML = swimWorkouts[currentSwim][0];
             document.getElementById("t32").innerHTML = swimWorkouts[currentSwim][1];
             document.getElementById("t33").innerHTML = swimWorkouts[currentSwim][2];
         }
 
+        /*called from html to print another tip
+        * tipNumber tells which one was sent in*/
         function getTip(tipNumber) {
             var textVar = document.getElementById("tipsArea");
             textVar.innerHTML = tips[tipNumber];
         }
 
+        /*called when change run button is pressed*/
         function changeRun() {
+            /*actualize currentRun*/
             currentRun = (currentRun < runWorkouts.length - 1)
                     ? (currentRun + 1) : 0;
-
+            /*actualize line 1 corresponding to runs*/
             document.getElementById("t11").innerHTML = runWorkouts[currentRun][0];
             document.getElementById("t12").innerHTML = runWorkouts[currentRun][1];
             document.getElementById("t13").innerHTML = runWorkouts[currentRun][2];
         }
 
+        /*called when change bike button is pressed*/
         function changeBike() {
+            /*actualize currentBike*/
             currentBike = (currentBike < bikeWorkouts.length - 1)
                     ? (currentBike + 1) : 0;
-
+            /*actualize line 2 corresponding to bike rides*/
             document.getElementById("t21").innerHTML = bikeWorkouts[currentBike][0];
             document.getElementById("t22").innerHTML = bikeWorkouts[currentBike][1];
             document.getElementById("t23").innerHTML = bikeWorkouts[currentBike][2];
         }
 
+        /*called when change swim is pressed*/
         function changeSwim() {
+            /*actualize currentSwim*/
             currentSwim = (currentSwim < swimWorkouts.length - 1)
                     ? (currentSwim + 1) : 0;
-
+            /*actualize line 3 corresponding to swim workouts*/
             var t31 = document.getElementById("t31").innerHTML = swimWorkouts[currentSwim][0];
             var t32 = document.getElementById("t32").innerHTML = swimWorkouts[currentSwim][1];
             var t33 = document.getElementById("t33").innerHTML = swimWorkouts[currentSwim][2];
         }
 
+        /*called when change image button is pressed*/
         function changeImg() {
             var imageVar = document.getElementById("imageSlide");
+            /*first remove the current image*/
             imageVar.removeChild(images[currentImage]);
-
+            /*update index*/
             currentImage = (currentImage < images.length - 1)
                     ? (currentImage + 1) : 0;
-
+            /*add the new image*/
             imageVar.appendChild(images[currentImage]);
         }
-
     </script>
 
 </head>
+<!--begin of body that calls start function-->
 <body onload="start()">
+<!--div0 corresponds to all other divs-->
 <div class="div0">
+    <!--div1 corresponds to presentation area-->
     <div class="div1">
         <h1> Healthy Cuisine </h1>
         <p> Hi! I'm Laurentiu Pavel, an Ironman triathlete.
@@ -186,25 +219,38 @@
         <p> For more info, you should <a href="mailto:lpavel@wpi.edu"> email me</a>
         </p>
     </div>
+    <!--end of presentation-->
+    <!--start of image div-->
     <div class="div2">
+        <!--a slot for the image-->
         <div id="imageSlide"> </div>
+        <!--define a button tha calls changeImg every time it's pressed-->
         <button id="imageButton" onclick="changeImg()">Next Dish</button>
     </div>
+    <!--end of image div-->
+    <!--start of textarea div-->
     <div class="div3">
         <h3> Here some tips about training </h3>
+        <!--define a textarea to be filled in javascript-->
         <textarea id="tipsArea"> </textarea>
+        <!--some space before the buttons-->
         <br>
+        <!--the 3 buttons that show different things-->
         <button id="Tip1Button" onclick="getTip(0)">Tip1</button>
         <button id="Tip2Button" onclick="getTip(1)">Tip2</button>
         <button id="Tip3Button" onclick="getTip(2)">Tip3</button>
     </div>
+    <!--end of textarea div-->
+    <!--start of table div-->
     <div class="div4">
         <table>
+            <!--row with table definitions-->
             <tr>
                 <td>type</td>
                 <td>specific</td>
                 <td>duration</td>
             </tr>
+            <!--3 rows with slots reserved to be filled from javascript-->
             <tr>
                 <td id="t11"></td>
                 <td id="t12"></td>
@@ -220,13 +266,14 @@
                 <td id="t32"></td>
                 <td id="t33"></td>
             </tr>
-
         </table>
-        <p> Not relevant yet</p>
+        <!--buttons for changing different contents-->
         <button id="Workout1" onclick="changeRun()">ChangeRunWorkout</button>
         <button id="Workout2" onclick="changeBike()">ChangeBikeWorkout</button>
         <button id="Workout3" onclick="changeSwim()">ChangeSwimWorkout</button>
     </div>
+    <!--end of table div-->
 </div>
+<!--end of div containing everything-->
 </body>
 </html>
