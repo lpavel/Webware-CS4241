@@ -12,34 +12,49 @@
 
     <!--css definitions-->
     <style type="text/css">
+        /*corresponds to the overall div*/
+        #div0{
+            font-family: sans-serif;
+        }
         /*corresponds to top div*/
-        .div1{
+        #div1{
             position: absolute;
             top: 5px;
             left: 5px;
-            height: 200px;
+            height: 300px;
             width: 500px;
         }
         /*corresponds to left middle div*/
-        .div2{
+        #div2{
             position: absolute;
-            top: 220px;
+            top: 320px;
             left: 5px;
             width: 620px;
             height: 420px;
         }
         /*corresponds to right middle div*/
-        .div3 {
+        #div3 {
             position: absolute;
-            top: 220px;
+            top: 320px;
             left: 640px;
             height: 420px;
         }
         /*corresponds to bottom div*/
-        .div4 {
+        #div4 {
             position: absolute;
-            top: 670px;
+            top: 800px;
             left: 5px;
+        }
+        /*changes when visited*/
+        a:visited {
+            text-decoration:underline;
+            color: pink;
+        }
+
+        /*changes when hovered*/
+        a:hover {
+            text-decoration: none;
+            color: green;
         }
         /*the image slot inside div2*/
         #imageSlide{
@@ -199,19 +214,90 @@
             /*add the new image*/
             imageVar.appendChild(images[currentImage]);
         }
+
+        /*called when layout is changed*/
+        function triggerStyleChange() {
+            var pageStyleVar = document.getElementById("triggerStyleChange");
+            var styleSelected = pageStyleVar.selectedIndex;
+
+            console.log("styleSelected:" + styleSelected);
+
+            if(styleSelected == 0) {
+                setAbsolute();
+            }
+            else {
+                setRelative();
+            }
+        }
+
+        //set values for absolute positioning
+        function setAbsolute() {
+            document.getElementById("div1").style.position="absolute";
+            document.getElementById("div1").style.top="5px";
+            document.getElementById("div1").style.left="5px";
+            document.getElementById("div1").style.height="300px";
+            document.getElementById("div1").style.width="500px";
+
+            document.getElementById("div2").style.position="absolute";
+            document.getElementById("div2").style.top="320px";
+            document.getElementById("div2").style.left="5px";
+            document.getElementById("div2").style.height="420px";
+            document.getElementById("div2").style.width="620px";
+
+            document.getElementById("div3").style.position="absolute";
+            document.getElementById("div3").style.top="320px";
+            document.getElementById("div3").style.left="640px";
+            document.getElementById("div3").style.height="420px";
+
+            document.getElementById("div4").style.position="absolute";
+            document.getElementById("div4").style.top="800px";
+            document.getElementById("div4").style.left="5px";
+        }
+
+        // set values for relative positioning
+        function setRelative() {
+            document.getElementById("div1").style.position="relative";
+            document.getElementById("div1").style.top="0px";
+            document.getElementById("div1").style.left="0px";
+            document.getElementById("div1").style.marginTop="20px";
+            document.getElementById("div1").style.marginLeft="20px";
+
+            document.getElementById("div2").style.position="relative";
+            document.getElementById("div2").style.top="0px";
+            document.getElementById("div2").style.left="0px";
+            document.getElementById("div2").style.marginTop="20px";
+            document.getElementById("div2").style.marginLeft="20px";
+
+            document.getElementById("div3").style.position="relative";
+            document.getElementById("div3").style.top="0px";
+            document.getElementById("div3").style.left="0px";
+            document.getElementById("div3").style.marginTop="20px";
+            document.getElementById("div3").style.marginLeft="20px";
+
+            document.getElementById("div4").style.position="relative";
+            document.getElementById("div4").style.top="0px";
+            document.getElementById("div4").style.left="0px";
+            document.getElementById("div4").style.marginTop="20px";
+            document.getElementById("div4").style.marginLeft="20px";
+        }
+
     </script>
 
 </head>
 <!--begin of body that calls start function-->
 <body onload="start()">
 <!--div0 corresponds to all other divs-->
-<div class="div0">
-    <select id="trigger-style-change">
-        <option value="absolute" selected>Absolute style</option>
-        <option value="flow">Flow style</option>
-    </select>
+<div id="div0">
     <!--div1 corresponds to presentation area-->
-    <div class="div1">
+    <div id="div1">
+        <p> You can change the style here:
+            <!--drop down button-->
+            <select id="triggerStyleChange" onchange="triggerStyleChange()">
+                <option> Absolute</option>
+                <option> Flow</option>
+            </select>
+        </p>
+
         <h1> Healthy Cuisine </h1>
         <p> Hi! I'm Laurentiu Pavel, an Ironman triathlete.
             For us, triathletes, nutrition is such a big part
@@ -225,7 +311,7 @@
     </div>
     <!--end of presentation-->
     <!--start of image div-->
-    <div class="div2">
+    <div id="div2">
         <!--a slot for the image-->
         <div id="imageSlide"> </div>
         <!--define a button tha calls changeImg every time it's pressed-->
@@ -233,7 +319,7 @@
     </div>
     <!--end of image div-->
     <!--start of textarea div-->
-    <div class="div3">
+    <div id="div3">
         <h3> Here some tips about training </h3>
         <!--define a textarea to be filled in javascript-->
         <textarea id="tipsArea"> </textarea>
@@ -246,7 +332,7 @@
     </div>
     <!--end of textarea div-->
     <!--start of table div-->
-    <div class="div4">
+    <div id="div4">
         <table>
             <!--row with table definitions-->
             <tr>
@@ -275,6 +361,7 @@
         <button id="Workout1" onclick="changeRun()">ChangeRunWorkout</button>
         <button id="Workout2" onclick="changeBike()">ChangeBikeWorkout</button>
         <button id="Workout3" onclick="changeSwim()">ChangeSwimWorkout</button>
+
     </div>
     <!--end of table div-->
 </div>
